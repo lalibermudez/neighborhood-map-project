@@ -11,7 +11,9 @@
 <body class="container">
 	<div class="row">
 		<div class="list col-3">
-			<ul class="locations"></ul>
+			<ul class="locations" data-bind="foreach: sites">
+				<li data-bind="text: title"></li>
+			</ul>
 		</div>
 		<div id="map" class="col-9"></div>
 	</div>
@@ -33,9 +35,10 @@
     </script>
 
     <!--  ************************************************  Links to JS files and libraries ************************************************* -->
-	<script type="text/javascript" src="js/app.js"></script>
 	<!-- JS Link to Knockout -->
     <script type="text/javascript" src="js/lib/knockout-3.4.2.js"></script>
+    <!-- JS Link to app.js -->
+    <script type="text/javascript" src="js/app.js"></script>
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <!-- jQuery local fallback -->
