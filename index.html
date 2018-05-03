@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/styles.css">
+
 	<title>Neighborhood Map Project</title>
 </head>
 <body>
@@ -9,10 +13,35 @@
 		<div class="list">
 			<ul class="locations"></ul>
 		</div>
-		<div class="map">
-			
+		<div id="map">
 		</div>
 	</div>
-	
+	<!-- Load Google Maps API -->
+	<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMiWUZNCdw8W_1Glymv6-Tro4sxjcvB9o&v=3&callback=initMap">
+    </script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<!-- JS Link to Knockout -->
+    <script type="text/javascript" src="js/lib/knockout-3.4.2.js"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- jQuery local fallback -->
+    <script>window.jQuery || document.write('<script src="js/lib/jquery.min.js"><\/script>')</script>
+    <!-- Popper CDN -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<!-- Bootstrap JS CDN -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- Bootstrap JS local fallback -->
+  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="js/lib/bootstrap.min.js"><\/script>')}</script>
+  <!-- Bootstrap CSS local fallback -->
+  <div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="css/lib/bootstrap.min.css">');
+      }
+    });
+  </script>
+  <!-- local fallback for CDN taken from https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server -->
 </body>
 </html>
