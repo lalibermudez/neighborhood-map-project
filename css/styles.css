@@ -1,4 +1,7 @@
+
+
 html, body {
+	box-sizing: border-box;
 	font-family: Arial, sans-serif;
 	height: 100%;
 	margin: 0;
