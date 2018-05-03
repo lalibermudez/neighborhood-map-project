@@ -29,4 +29,10 @@ var sites = [
 		map: map,
 		animation:
 	}
-]     
+] 
+
+var AppViewModel = function() {
+
+};
+
+ko.applyBindings(new AppViewModel()); 
