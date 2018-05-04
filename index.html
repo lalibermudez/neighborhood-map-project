@@ -19,22 +19,6 @@
 		<div id="map" class="col-9"></div>
 	</div>
 
-	<script>
-      var map;
-      function initMap() {
-        // Constructor creates a new map - only center and zoom are required.
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 9.00876, lng: -79.520244},
-          zoom: 11
-        });
-      }
-    </script>
-
-	<!-- Load Google Maps API -->
-	<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMiWUZNCdw8W_1Glymv6-Tro4sxjcvB9o&v=3&callback=initMap">
-    </script>
-
     <!--  ************************************************  Links to JS files and libraries ************************************************* -->
 	<!-- JS Link to Knockout -->
     <script type="text/javascript" src="js/lib/knockout-3.4.2.js"></script>
@@ -60,5 +44,10 @@
     });
   </script>
   <!-- local fallback for CDN taken from https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server -->
+
+  <!-- Load Google Maps API -->
+	<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMiWUZNCdw8W_1Glymv6-Tro4sxjcvB9o&v=3&callback=initMap">
+    </script>
 </body>
 </html>

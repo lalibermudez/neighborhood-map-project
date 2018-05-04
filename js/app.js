@@ -9,33 +9,70 @@ var sites = [
 		title: "Casco Antiguo",
 		location: {lat: 8.953272, lng: -79.533692},
 		map: map,
-		animation: ""
+		// animation: ""
 	},
 	{
 		title: "Panama Canal",
 		location: {lat: 9.022348, lng: -79.616695},
 		map: map,
-		animation: ""
+		// animation: ""
 	},
 	{
 		title: "Causeway",
 		location: {lat: 8.917218, lng: -79.533039},
 		map: map,
-		animation: ""
+		// animation: ""
 	},
 	{
 		title: "Tocumen International Airport",
 		location: {lat: 9.067526, lng: -79.387147},
 		map: map,
-		animation: ""
+		// animation: ""
 	}
 ];
+
+var map;
+
+function initMap() {
+	// Constructor creates a new map
+	map = new google.maps.Map(document.getElementById('map'), {
+	  center: {lat: 9.00876, lng: -79.520244},
+	  zoom: 11
+	});
+};
 
 var AppViewModel = function() {
 	var self = this;
 
-	this.sitesList = ko.observableArray();
+	self.markers = [];
 
+	// self.placeMarkers = function() {
+	// 	// The following group uses the sites array to create an array of markers on initialize.
+		// for (var i = 0; i < sites.length; i++) {
+	// 		// Get the position from the sites array.
+	// 		var position = sites[i].location;
+	// 		var title = sites[i].title;
+	// 		// Create a marker per site, and put into markers array.
+	// 		var marker = new google.maps.Marker({
+	// 			map: map,
+	// 			position: position,
+	// 			title: title,
+	// 			animation: google.maps.Animation.DROP,
+	// 			id: i
+	// 		});
+	// 		// Push the marker to our array of markers.
+	// 		markers.push(marker);
+	// 	};
+	// };
+
+	// createMarkers();
+
+        // var marker = new google.maps.Marker({
+        //   position: {lat: 9.067526, lng: -79.387147},
+        //   map: map,
+        //   title: 'First Marker!'
+        // });
 };
+
 
 ko.applyBindings(new AppViewModel()); 
