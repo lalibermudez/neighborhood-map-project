@@ -33,6 +33,7 @@ var sites = [
 
 var map;
 var markers = [];
+var largeInfowindow;
 
 var initMap = function() {
 	// Constructor creates a new map
@@ -41,7 +42,7 @@ var initMap = function() {
 		zoom: 11
 	});
 
-	var largeInfowindow = new google.maps.InfoWindow();
+	largeInfowindow = new google.maps.InfoWindow();
 
 	// The following group uses the sites array to create an array of markers on initialize.
 	for (var i = 0; i < sites.length; i++) {
@@ -95,22 +96,28 @@ var toggleBounce = function(marker) {
 };	
 
 var Marker = function(data) {
-	this.title = ko.observable(data.title);
+	this.title = data.title;
+	this.location = data.location;
+	this.map = data.map;
 };
 
 var ViewModel = function() {
 	var self = this;
 
-	var markerList = ko.observableArray([]);
+	var markerList = [];
 
-	sites.forEach(function(loc) {
-		markerList.push(new Marker(loc));
+	sites.forEach(function(site) {
+		markerList.push(new Marker(site));
 	});
 
 	console.log(markerList);
 
 	self.clickList = function(markerList) {
-		window.alert("hey " + markerList.title);
+		window.alert("hey " + markerList.title + " " + markerList.location + " " + markerList.map);
+		var infowindow = new google.maps.InfoWindow({
+			content: markerList.title
+		});
+		infowindow.open(map, markerList.location);
 	}
 };
 
