@@ -66,6 +66,8 @@ var initMap = function() {
 			toggleBounce(this);
 		});
 	};
+
+	console.log(markers);
 };
 
 var populateInfoWindow = function(marker, infowindow) {
@@ -95,11 +97,10 @@ var toggleBounce = function(marker) {
 var AppViewModel = function() {
 	var self = this;
 
-	// self.populateInfoWindow = function() {
-	// 	var infoWindow = new google.maps.InfoWindow({
-	// 		content: sites.title
-	// 	});
+	// self.clickedList = function() {
+
 	// }
+
 
 };
 
