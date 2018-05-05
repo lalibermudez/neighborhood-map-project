@@ -97,11 +97,9 @@ var toggleBounce = function(marker) {
 var AppViewModel = function() {
 	var self = this;
 
-	// self.clickedList = function() {
-
-	// }
-
-
+	self.clickList = function() {
+		window.alert("hey");
+	}
 };
 
 ko.applyBindings(new AppViewModel()); 
