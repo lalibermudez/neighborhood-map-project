@@ -1,6 +1,6 @@
 var sites = [
 	{
-		title: "Panama Viejo - Old Panama",
+		title: "Panama Viejo",
 		location: {lat: 9.00677, lng: -79.487071},
 		map: map,
 		label : "A"
@@ -92,14 +92,26 @@ var toggleBounce = function(marker) {
 			marker.setAnimation(null);
 		}, 400);
 	}
+};	
+
+var Marker = function(data) {
+	this.title = ko.observable(data.title);
 };
 
-var AppViewModel = function() {
+var ViewModel = function() {
 	var self = this;
 
-	self.clickList = function() {
-		window.alert("hey");
+	var markerList = ko.observableArray([]);
+
+	sites.forEach(function(loc) {
+		markerList.push(new Marker(loc));
+	});
+
+	console.log(markerList);
+
+	self.clickList = function(markerList) {
+		window.alert("hey " + markerList.title);
 	}
 };
 
-ko.applyBindings(new AppViewModel()); 
+ko.applyBindings(new ViewModel()); 

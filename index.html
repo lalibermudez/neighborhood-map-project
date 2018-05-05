@@ -33,19 +33,19 @@
 	<!-- Bootstrap JS CDN -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<!-- Bootstrap JS local fallback -->
-  <script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="js/lib/bootstrap.min.js"><\/script>')}</script>
-  <!-- Bootstrap CSS local fallback -->
-  <div id="bootstrapCssTest" class="hidden"></div>
-  <script>
-    $(function() {
-      if ($('#bootstrapCssTest').is(':visible')) {
-        $("head").prepend('<link rel="stylesheet" href="css/lib/bootstrap.min.css">');
-      }
-    });
-  </script>
-  <!-- local fallback for CDN taken from https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server -->
-
-  <!-- Load Google Maps API -->
+	<script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="js/lib/bootstrap.min.js"><\/script>')}</script>
+	<!-- Bootstrap CSS local fallback -->
+	<div id="bootstrapCssTest" class="hidden"></div>
+	<script>
+	$(function() {
+		if ($('#bootstrapCssTest').is(':visible')) {
+			$("head").prepend('<link rel="stylesheet" href="css/lib/bootstrap.min.css">');
+		}
+	});
+	</script>
+	<!-- local fallback for CDN taken from https://stackoverflow.com/questions/26192897/should-i-use-bootstrap-from-cdn-or-make-a-copy-on-my-server -->
+	
+  	<!-- Load Google Maps API -->
 	<script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMiWUZNCdw8W_1Glymv6-Tro4sxjcvB9o&v=3&callback=initMap">
     </script>
