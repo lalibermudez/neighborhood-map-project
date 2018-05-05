@@ -63,6 +63,7 @@ var initMap = function() {
 		// Create an onclick event to open an infowindow at each marker.
 		marker.addListener('click', function() {
 			populateInfoWindow(this, largeInfowindow);
+			toggleBounce(this);
 		});
 	};
 };
@@ -78,6 +79,17 @@ var populateInfoWindow = function(marker, infowindow) {
 			infowindow.marker = null;
 		});
 	};
+};
+
+var toggleBounce = function(marker) {
+	if (marker.getAnimation() !== null) {
+		marker.setAnimation(null);
+	} else {
+		marker.setAnimation(google.maps.Animation.BOUNCE);
+		setTimeout(function() {
+			marker.setAnimation(null);
+		}, 400);
+	}
 };
 
 var AppViewModel = function() {
