@@ -98,9 +98,18 @@ var toggleBounce = function(marker) {
 var ViewModel = function() {
 	var self = this;
 
+	var currentMarker;
+
 	self.clickList = function(current) {
-		window.alert("hey " + current.title + " " + current.label + " " + current.location);
-	}
+		
+		for (var i = 0; i < markers.length; i++) {
+			if (markers[i].title === current.title) {
+				currentMarker = markers[i];
+				toggleBounce(currentMarker);
+				populateInfoWindow(currentMarker, largeInfowindow);
+			}
+		}
+	};
 };
 
 ko.applyBindings(new ViewModel()); 
