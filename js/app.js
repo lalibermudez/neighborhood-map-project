@@ -95,29 +95,11 @@ var toggleBounce = function(marker) {
 	}
 };	
 
-var Marker = function(data) {
-	this.title = data.title;
-	this.location = data.location;
-	this.map = data.map;
-};
-
 var ViewModel = function() {
 	var self = this;
 
-	var markerList = [];
-
-	sites.forEach(function(site) {
-		markerList.push(new Marker(site));
-	});
-
-	console.log(markerList);
-
-	self.clickList = function(markerList) {
-		window.alert("hey " + markerList.title + " " + markerList.location + " " + markerList.map);
-		var infowindow = new google.maps.InfoWindow({
-			content: markerList.title
-		});
-		infowindow.open(map, markerList.location);
+	self.clickList = function(current) {
+		window.alert("hey " + current.title + " " + current.label + " " + current.location);
 	}
 };
 
