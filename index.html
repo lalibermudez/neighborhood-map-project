@@ -15,9 +15,9 @@
 			<form>
 				<input type="search" placeholder="Search..." name="search" data-bind="value: query, valueUpdate: 'keyup' " autocomplete="off">
 			</form>
-			<ol type="A" class="locations" data-bind="{foreach: filter}">
-				<li data-bind="text: title, click: $parent.clickList"></li>
-			</ol>
+			<ul class="locations" data-bind="{foreach: filter}">
+				<li data-bind="text: label + '. ' + title, click: $parent.clickList"></li>
+			</ul>
 		</div>
 		<div id="map" class="col-9"></div>
 	</div>
