@@ -71,6 +71,7 @@ var initMap = function() {
 	console.log(markers);
 };
 
+// Function to display the infowindow above the marker
 var populateInfoWindow = function(marker, infowindow) {
 	// Check to make sure the infowindow is not already opened on this marker.
 	if (infowindow.marker != marker) {
@@ -84,6 +85,7 @@ var populateInfoWindow = function(marker, infowindow) {
 	};
 };
 
+// Function to make the marker bounce
 var toggleBounce = function(marker) {
 	if (marker.getAnimation() !== null) {
 		marker.setAnimation(null);
@@ -101,6 +103,7 @@ var ViewModel = function() {
 
 	var currentMarker;
 
+	// Function to display infowindow and bounce the marker when a name in the list is clicked
 	self.clickList = function(current) {
 		for (var i = 0; i < markers.length; i++) {
 			if (markers[i].title === current.title) {
@@ -111,13 +114,17 @@ var ViewModel = function() {
 		}
 	};
 
+	// Create an observable array from the sites array
 	self.places = ko.observableArray(sites);
 
+	// Create an observable with the value from the search input
 	self.query = ko.observable('');
 
+	// Function to filter the list items from the list value
 	self.filter = ko.computed(function() {
 		var search = self.query().toLowerCase();
 		return ko.utils.arrayFilter(self.places(), function(place) {
+
 			return place.title.toLowerCase().indexOf(search) >= 0;
 		});
 	});
