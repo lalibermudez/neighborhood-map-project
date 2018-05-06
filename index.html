@@ -12,6 +12,9 @@
 	<div class="row">
 		<div class="list col-3">
 			<h4>Panama City Sites</h4>
+			<form>
+				<input type="search" name="search" data-bind="value: query, event: {keyup: filter}" autocomplete="off">
+			</form>
 			<ol type="A" class="locations" data-bind="foreach: sites">
 				<li data-bind="text: title, click: $parent.clickList"></li>
 			</ol>

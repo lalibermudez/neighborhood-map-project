@@ -96,12 +96,12 @@ var toggleBounce = function(marker) {
 };	
 
 var ViewModel = function() {
+
 	var self = this;
 
 	var currentMarker;
 
 	self.clickList = function(current) {
-		
 		for (var i = 0; i < markers.length; i++) {
 			if (markers[i].title === current.title) {
 				currentMarker = markers[i];
@@ -110,6 +110,17 @@ var ViewModel = function() {
 			}
 		}
 	};
+
+	self.places = ko.observableArray(sites);
+
+	self.query = ko.observable('');
+
+	self.filter = ko.computed(function() {
+		var search = self.query().toLowerCase();
+		return ko.utils.arrayFilter(self.places(), function(place) {
+			return place.title.toLowerCase().indexOf(search) >= 0;
+		});
+	});
 };
 
 ko.applyBindings(new ViewModel()); 
