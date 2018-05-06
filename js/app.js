@@ -121,12 +121,32 @@ var ViewModel = function() {
 	self.query = ko.observable('');
 
 	// Function to filter the list items from the list value
+	// Function obtained from:
+	// https://opensoul.org/2011/06/23/live-search-with-knockoutjs/ 
+	// http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
 	self.filter = ko.computed(function() {
 		var search = self.query().toLowerCase();
 		return ko.utils.arrayFilter(self.places(), function(place) {
-
-			return place.title.toLowerCase().indexOf(search) >= 0;
+			var result = place.title.toLowerCase().indexOf(search) >= 0;
+			
+			// Loop to filter the markers
+			if (result === false) {
+				for (var j = 0; j < markers.length; j++) {
+					if (markers[j].title === place.title) {
+						console.log("markers.title " + markers[j].title);
+						markers[j].setMap(null);
+					} 
+				}
+			}
+			console.log("place.title " + place.title);
+			
+			console.log(result);
+			return result;
 		});
+
+		// for (var j = 0; j < markers.length; j++) {
+		// 		markers[j].setMap(map);
+		// 	}
 	});
 };
 
