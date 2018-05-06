@@ -101,6 +101,7 @@ var ViewModel = function() {
 
 	var self = this;
 
+	// Variable to relate marker to list item
 	var currentMarker;
 
 	// Function to display infowindow and bounce the marker when a name in the list is clicked
@@ -120,33 +121,31 @@ var ViewModel = function() {
 	// Create an observable with the value from the search input
 	self.query = ko.observable('');
 
-	// Function to filter the list items from the list value
-	// Function obtained from:
-	// https://opensoul.org/2011/06/23/live-search-with-knockoutjs/ 
-	// http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
+	// Function to filter the list items from the list value, obtained from:
+	// 	https://opensoul.org/2011/06/23/live-search-with-knockoutjs/ 
+	// 	http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
 	self.filter = ko.computed(function() {
 		var search = self.query().toLowerCase();
 		return ko.utils.arrayFilter(self.places(), function(place) {
 			var result = place.title.toLowerCase().indexOf(search) >= 0;
 			
-			// Loop to filter the markers
+			// Filter the markers along with the search
 			if (result === false) {
 				for (var j = 0; j < markers.length; j++) {
 					if (markers[j].title === place.title) {
-						console.log("markers.title " + markers[j].title);
-						markers[j].setMap(null);
+						markers[j].setMap(null); // Remove marker from the map if it doesn't match the search
 					} 
 				}
-			}
-			console.log("place.title " + place.title);
-			
-			console.log(result);
+			} else {
+				for (var j = 0; j < markers.length; j++) {
+					if (markers[j].title === place.title) {
+						markers[j].setMap(map); // Place the markers on the map if they match the search
+					} 
+				}
+			};
+
 			return result;
 		});
-
-		// for (var j = 0; j < markers.length; j++) {
-		// 		markers[j].setMap(map);
-		// 	}
 	});
 };
 
