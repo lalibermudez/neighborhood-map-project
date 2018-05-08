@@ -34,6 +34,7 @@ var sites = [
 var map;
 var markers = [];
 var largeInfowindow;
+var infoContent;
 var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=';
 
 var initMap = function() {
@@ -71,14 +72,15 @@ var initMap = function() {
 };
 
 // Function to display the infowindow above the marker
-var populateInfoWindow = function(marker, infowindow) {
+var populateInfoWindow = function(marker, infowindow, content) {
 	// Check to make sure the infowindow is not already opened on this marker.
 	if (infowindow.marker != marker) {
 		infowindow.marker = marker;
 		infowindow.setContent('<div>' + marker.title + '</div>');
-		infowindow.setContent('<div>' + marker.title + '</div>' + 
-			'<div>' + siteDescription + '</div>' +
-			'<div><a href=' + siteWikiLink + 'a></div>');
+		// infowindow.setContent('<div>' + marker.title + '</div>' + 
+		// 	'<div>' + siteDescription + '</div>' +
+		// 	'<div><a href=' + siteWikiLink + 'a></div>');
+		infowindow.setContent(content);
 		infowindow.open(map, marker);
 		// Make sure the marker property is cleared if the infowindow is closed.
 		infowindow.addListener('closeclick', function() {
@@ -112,7 +114,7 @@ var ViewModel = function() {
 			if (markers[i].title === current.title) {
 				currentMarker = markers[i];
 				toggleBounce(currentMarker);
-				populateInfoWindow(currentMarker, largeInfowindow);
+				// populateInfoWindow(currentMarker, largeInfowindow);
 				self.getWiki(currentMarker);
 			}
 		}
@@ -170,10 +172,16 @@ var ViewModel = function() {
 				console.log(response);
 				console.log(response[2][0]);
 				console.log(response[3][0]);
-				
-				var content = '<div>' + marker.title + '</div>' + 
+				var siteDescription = response[2][0];
+				var siteWikiLink = response[3][0];
+
+				//Create InfoWindow content with Wikipedia info
+				infoContent = '<div>' + current.title + '</div>' + 
 								'<div>' + siteDescription + '</div>' +
 								'<div><a href=' + siteWikiLink + 'a></div>';
+				console.log(infoContent);
+
+				populateInfoWindow(current, largeInfowindow, infoContent);
 
 			}
 		});
