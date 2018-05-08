@@ -8,8 +8,16 @@ html, body {
 	padding: 0;
 }
 
-.row {
+.app-content {
 	height: 100%;
+}
+
+.app-title {
+	text-align: center;
+}
+
+.locations {
+	list-style-type: none;
 }
 
 #map {
