@@ -44,7 +44,9 @@ var initMap = function() {
 		zoom: 11
 	});
 
-	largeInfowindow = new google.maps.InfoWindow();
+	largeInfowindow = new google.maps.InfoWindow({
+		maxWidth: 200
+	});
 
 	// The following group uses the sites array to create an array of markers on initialize.
 	for (var i = 0; i < sites.length; i++) {
@@ -80,6 +82,7 @@ var populateInfoWindow = function(marker, infowindow, content) {
 		// infowindow.setContent('<div>' + marker.title + '</div>' + 
 		// 	'<div>' + siteDescription + '</div>' +
 		// 	'<div><a href=' + siteWikiLink + 'a></div>');
+		// infowindow.setMaxWidth(200);
 		infowindow.setContent(content);
 		infowindow.open(map, marker);
 		// Make sure the marker property is cleared if the infowindow is closed.
@@ -178,7 +181,7 @@ var ViewModel = function() {
 				//Create InfoWindow content with Wikipedia info
 				infoContent = '<div>' + current.title + '</div>' + 
 								'<div>' + siteDescription + '</div>' +
-								'<div><a href=' + siteWikiLink + 'a>' + current.title + ' (Wikipedia)' + '</a></div>';
+								'<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
 				console.log(infoContent);
 
 				populateInfoWindow(current, largeInfowindow, infoContent);
