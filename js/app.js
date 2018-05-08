@@ -75,6 +75,10 @@ var initMap = function() {
 	};
 };
 
+var mapError = function() {
+	$('#map').html('<div class=map-error>Oops! Could not load Google Map. Try again later.</div>')
+};
+
 var clickMarker = function(marker) {
 	getWiki(marker);
 	toggleBounce(marker);
@@ -124,8 +128,6 @@ var toggleBounce = function(marker) {
 						  '<div>' + siteDescription + '</div>' +
 				    	  '<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
 			console.log(infoContent);
-
-			// clearTimeout(wikiRequestTimeout);
 
 			largeInfowindow.setContent(infoContent);
 		},
