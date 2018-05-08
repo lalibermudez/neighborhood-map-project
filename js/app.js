@@ -96,6 +96,40 @@ var toggleBounce = function(marker) {
 	}
 };	
 
+// var getWiki = function() {
+// 		$.ajax({
+// 			url: wikiUrl,
+// 			dataType: 'jsonp',
+// 			success: function(response) {
+// 				console.log(response);
+// 			}
+// 		});
+// 	};
+
+// var getWiki = function() {
+// 	$.ajax({
+// 		url: wikiUrl,
+// 		dataType:'jsonp',
+// 		success: function(response) {
+// 			console.log(response);
+// 		}
+// 	})
+// };
+
+// var getWiki = function() {
+
+// 	$.ajax({
+//         url: wikiUrl,
+//         dataType: "jsonp",
+//         success: function(response) {
+//             console.log("success");
+//             console.log(response);
+//         }
+//     }).error(function() {
+//     	console.log('error');
+//     });
+// };
+
 var ViewModel = function() {
 
 	var self = this;
@@ -110,7 +144,7 @@ var ViewModel = function() {
 				currentMarker = markers[i];
 				toggleBounce(currentMarker);
 				populateInfoWindow(currentMarker, largeInfowindow);
-				self.getWiki(currentMarker);
+				self.getWiki();
 			}
 		}
 	};
@@ -148,15 +182,15 @@ var ViewModel = function() {
 		});
 	});
 
-	self.getWiki = ko.computed(function(current) {
+	self.getWiki = ko.computed(function() {
 		$.ajax({
-			url: wikiUrl + current.title,
+			url: wikiUrl + 'Casco Viejo' + ' Panama',
 			dataType: 'jsonp',
 			success: function(response) {
 				console.log(response);
 			}
 		});
-	})
+	});
 
 	// function(current) {
 	// 	$.ajax({
