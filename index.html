@@ -11,16 +11,21 @@
 </head>
 <body class="container">
 	<div class="row app-title">
-		<h4 class="col">Panama City Sites</h4>
+		<h2 class="col">Panama City Sites</h2>
 	</div>
 	<div class="row app-content">
 		<div class="list col-3">
-	
-			<form>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">@</span>
+				</div>
+				<input type="search" class="form-control" placeholder="Search..." name="search" data-bind="value: query, valueUpdate: 'keyup' " autocomplete="off">
+			</div>
+		<!-- 	<form>
 				<input type="search" placeholder="Search..." name="search" data-bind="value: query, valueUpdate: 'keyup' " autocomplete="off">
-			</form>
-			<ul class="locations" data-bind="{foreach: filter}">
-				<li data-bind="text: label + '. ' + title, click: $parent.clickList"></li>
+			</form> -->
+			<ul class="list-group locations" data-bind="{foreach: filter}">
+				<li class="list-group-item" data-bind="text: label + '. ' + title, click: $parent.clickList"></li>
 			</ul>
 		</div>
 		<div id="map" class="col-9"></div>
