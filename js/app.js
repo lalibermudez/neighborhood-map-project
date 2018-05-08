@@ -35,9 +35,9 @@ var map;
 var markers = [];
 var largeInfowindow;
 var infoContent;
-	var siteDescription;
-			var siteWikiLink;
-var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=';
+var siteDescription;
+var siteWikiLink;
+var wikiUrl = 'https://en.wikipefvbkddia.org/w/api.php?action=opensearch&format=json&search=';
 
 var initMap = function() {
 	// Constructor creates a new map centeres in Panama City, Panama
@@ -109,13 +109,6 @@ var toggleBounce = function(marker) {
 // AJAX request to get Wikipedia's info
  var getWiki = function(current) {
 
-	var wikiRequestTimeout = setTimeout(function() {
-		infoContent = '<div>' + current.title + '</div>' + 
-					  '<div>' + siteDescription + '</div>';
-
-		populateInfoWindow(current, largeInfowindow, infoContent);
-	}, 8000);
-
 	$.ajax({
 		url: wikiUrl + current.title,
 		dataType: 'jsonp',
@@ -135,11 +128,14 @@ var toggleBounce = function(marker) {
 			clearTimeout(wikiRequestTimeout);
 
 			largeInfowindow.setContent(infoContent);
-
-			// populateInfoWindow(current, largeInfowindow, infoContent);
-
+		},
+		error: function() {
+			infoContent = '<div>' + current.title + '</div>' + 
+						  '<div>Unable to load Wikipedia resources.</div>';
+			largeInfowindow.setContent(infoContent);
 		}
 	});
+		
 };
 
 var ViewModel = function() {
