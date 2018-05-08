@@ -37,7 +37,7 @@ var largeInfowindow;
 var infoContent;
 var siteDescription;
 var siteWikiLink;
-var wikiUrl = 'https://en.wikipefvbkddia.org/w/api.php?action=opensearch&format=json&search=';
+var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=';
 
 var initMap = function() {
 	// Constructor creates a new map centeres in Panama City, Panama
@@ -120,18 +120,18 @@ var toggleBounce = function(marker) {
 			siteWikiLink = response[3][0];
 
 			//Create InfoWindow content with Wikipedia info
-			infoContent = '<div>' + current.title + '</div>' + 
+			infoContent = '<div class="info-title"><b>' + current.title + '</b></div>' + 
 						  '<div>' + siteDescription + '</div>' +
 				    	  '<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
 			console.log(infoContent);
 
-			clearTimeout(wikiRequestTimeout);
+			// clearTimeout(wikiRequestTimeout);
 
 			largeInfowindow.setContent(infoContent);
 		},
 		error: function() {
-			infoContent = '<div>' + current.title + '</div>' + 
-						  '<div>Unable to load Wikipedia resources.</div>';
+			infoContent = '<div class="info-title"><b>' + current.title + '</b></div>' + 
+						  '<div class="info-error">Unable to load Wikipedia resources.</div>';
 			largeInfowindow.setContent(infoContent);
 		}
 	});
