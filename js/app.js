@@ -44,6 +44,7 @@ var initMap = function() {
 		zoom: 11
 	});
 
+	// Create infoWindow object with maxWidth of 200px
 	largeInfowindow = new google.maps.InfoWindow({
 		maxWidth: 200
 	});
@@ -168,6 +169,14 @@ var ViewModel = function() {
 
 	// AJAX request to get Wikipedia's info
 	self.getWiki = function(current) {
+
+		var wikiRequestTimeout = setTimeout(function() {
+			infoContent = '<div>' + current.title + '</div>' + 
+						  '<div>' + siteDescription + '</div>';
+
+			populateInfoWindow(current, largeInfowindow, infoContent);
+		}, 8000);
+
 		$.ajax({
 			url: wikiUrl + current.title,
 			dataType: 'jsonp',
@@ -183,6 +192,8 @@ var ViewModel = function() {
 								'<div>' + siteDescription + '</div>' +
 								'<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
 				console.log(infoContent);
+
+				clearTimeout(wikiRequestTimeout);
 
 				populateInfoWindow(current, largeInfowindow, infoContent);
 
