@@ -34,6 +34,7 @@ var sites = [
 var map;
 var markers = [];
 var largeInfowindow;
+var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=';
 
 var initMap = function() {
 	// Constructor creates a new map
@@ -67,8 +68,6 @@ var initMap = function() {
 			toggleBounce(this);
 		});
 	};
-
-	console.log(markers);
 };
 
 // Function to display the infowindow above the marker
@@ -111,6 +110,7 @@ var ViewModel = function() {
 				currentMarker = markers[i];
 				toggleBounce(currentMarker);
 				populateInfoWindow(currentMarker, largeInfowindow);
+				self.getWiki(currentMarker);
 			}
 		}
 	};
@@ -139,7 +139,7 @@ var ViewModel = function() {
 			} else {
 				for (var j = 0; j < markers.length; j++) {
 					if (markers[j].title === place.title) {
-						markers[j].setMap(map); // Place the markers on the map if they match the search
+						markers[j].setMap(map); // Place the markers on the map if they do match the search
 					} 
 				}
 			};
@@ -147,6 +147,16 @@ var ViewModel = function() {
 			return result;
 		});
 	});
+
+	self.getWiki = function(current) {
+		$.ajax({
+			url: wikiUrl + current.title,
+			dataType: 'jsonp',
+			success: function(response) {
+				console.log(response);
+			}
+		});
+	};
 };
 
 ko.applyBindings(new ViewModel()); 
