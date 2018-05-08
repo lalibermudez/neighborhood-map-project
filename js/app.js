@@ -76,6 +76,9 @@ var populateInfoWindow = function(marker, infowindow) {
 	if (infowindow.marker != marker) {
 		infowindow.marker = marker;
 		infowindow.setContent('<div>' + marker.title + '</div>');
+		infowindow.setContent('<div>' + marker.title + '</div>' + 
+			'<div>' + siteDescription + '</div>' +
+			'<div><a href=' + siteWikiLink + 'a></div>');
 		infowindow.open(map, marker);
 		// Make sure the marker property is cleared if the infowindow is closed.
 		infowindow.addListener('closeclick', function() {
@@ -167,6 +170,11 @@ var ViewModel = function() {
 				console.log(response);
 				console.log(response[2][0]);
 				console.log(response[3][0]);
+				
+				var content = '<div>' + marker.title + '</div>' + 
+								'<div>' + siteDescription + '</div>' +
+								'<div><a href=' + siteWikiLink + 'a></div>';
+
 			}
 		});
 	};
