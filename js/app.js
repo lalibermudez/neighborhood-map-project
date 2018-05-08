@@ -35,10 +35,12 @@ var map;
 var markers = [];
 var largeInfowindow;
 var infoContent;
+	var siteDescription;
+			var siteWikiLink;
 var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=';
 
 var initMap = function() {
-	// Constructor creates a new map
+	// Constructor creates a new map centeres in Panama City, Panama
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 9.00876, lng: -79.520244},
 		zoom: 11
@@ -66,26 +68,24 @@ var initMap = function() {
 		});
 		// Push the marker to our array of markers.
 		markers.push(marker);
-		// Create an onclick event to open an infowindow at each marker.
+		// Create an onclick event to open an infowindow at each marker
 		marker.addListener('click', function() {
-			getWiki(this);
-			populateInfoWindow(this, largeInfowindow, infoContent);
-			toggleBounce(this);
+			clickMarker(this);
 		});
 	};
 };
 
+var clickMarker = function(marker) {
+	getWiki(marker);
+	toggleBounce(marker);
+	populateInfoWindow(marker, largeInfowindow);
+};
+
 // Function to display the infowindow above the marker
-var populateInfoWindow = function(marker, infowindow, content) {
+var populateInfoWindow = function(marker, infowindow) {
 	// Check to make sure the infowindow is not already opened on this marker.
 	if (infowindow.marker != marker) {
 		infowindow.marker = marker;
-		// infowindow.setContent('<div>' + marker.title + '</div>');
-		// infowindow.setContent('<div>' + marker.title + '</div>' + 
-		// 	'<div>' + siteDescription + '</div>' +
-		// 	'<div><a href=' + siteWikiLink + 'a></div>');
-		// infowindow.setMaxWidth(200);
-		infowindow.setContent(content);
 		infowindow.open(map, marker);
 		// Make sure the marker property is cleared if the infowindow is closed.
 		infowindow.addListener('closeclick', function() {
@@ -123,18 +123,20 @@ var toggleBounce = function(marker) {
 			console.log(response);
 			console.log(response[2][0]);
 			console.log(response[3][0]);
-			var siteDescription = response[2][0];
-			var siteWikiLink = response[3][0];
+			siteDescription = response[2][0];
+			siteWikiLink = response[3][0];
 
 			//Create InfoWindow content with Wikipedia info
 			infoContent = '<div>' + current.title + '</div>' + 
-							'<div>' + siteDescription + '</div>' +
-							'<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
+						  '<div>' + siteDescription + '</div>' +
+				    	  '<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
 			console.log(infoContent);
 
 			clearTimeout(wikiRequestTimeout);
 
-			populateInfoWindow(current, largeInfowindow, infoContent);
+			largeInfowindow.setContent(infoContent);
+
+			// populateInfoWindow(current, largeInfowindow, infoContent);
 
 		}
 	});
@@ -153,7 +155,7 @@ var ViewModel = function() {
 			if (markers[i].title === current.title) {
 				currentMarker = markers[i];
 				toggleBounce(currentMarker);
-				// populateInfoWindow(currentMarker, largeInfowindow);
+				populateInfoWindow(currentMarker, largeInfowindow, infoContent);
 				getWiki(currentMarker);
 			}
 		}
@@ -191,50 +193,6 @@ var ViewModel = function() {
 			return result;
 		});
 	});
-
-	// self.getWiki = ko.computed(function() {
-	// 	$.ajax({
-	// 		url: wikiUrl + 'Casco Viejo' + ' Panama',
-	// 		dataType: 'jsonp',
-	// 		success: function(response) {
-	// 			console.log(response);
-	// 		}
-	// 	});
-	// });
-
-	// // AJAX request to get Wikipedia's info
-	// self.getWiki = function(current) {
-
-	// 	var wikiRequestTimeout = setTimeout(function() {
-	// 		infoContent = '<div>' + current.title + '</div>' + 
-	// 					  '<div>' + siteDescription + '</div>';
-
-	// 		populateInfoWindow(current, largeInfowindow, infoContent);
-	// 	}, 8000);
-
-	// 	$.ajax({
-	// 		url: wikiUrl + current.title,
-	// 		dataType: 'jsonp',
-	// 		success: function(response) {
-	// 			console.log(response);
-	// 			console.log(response[2][0]);
-	// 			console.log(response[3][0]);
-	// 			var siteDescription = response[2][0];
-	// 			var siteWikiLink = response[3][0];
-
-	// 			//Create InfoWindow content with Wikipedia info
-	// 			infoContent = '<div>' + current.title + '</div>' + 
-	// 							'<div>' + siteDescription + '</div>' +
-	// 							'<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
-	// 			console.log(infoContent);
-
-	// 			clearTimeout(wikiRequestTimeout);
-
-	// 			populateInfoWindow(current, largeInfowindow, infoContent);
-
-	// 		}
-	// 	});
-	// };
 };
 
 ko.applyBindings(new ViewModel()); 
