@@ -6,7 +6,7 @@ var sites = [
 		label : "A"
 	},
 	{
-		title: "Casco Antiguo",
+		title: "Casco Viejo Panama",
 		location: {lat: 8.953272, lng: -79.533692},
 		map: map,
 		label : "B"
@@ -18,7 +18,7 @@ var sites = [
 		label : "C"
 	},
 	{
-		title: "Causeway",
+		title: "Causeway Islands",
 		location: {lat: 8.917218, lng: -79.533039},
 		map: map,
 		label : "D"
@@ -158,12 +158,15 @@ var ViewModel = function() {
 	// 	});
 	// });
 
+	// AJAX request to get Wikipedia's info
 	self.getWiki = function(current) {
 		$.ajax({
 			url: wikiUrl + current.title,
 			dataType: 'jsonp',
 			success: function(response) {
 				console.log(response);
+				console.log(response[2][0]);
+				console.log(response[3][0]);
 			}
 		});
 	};
