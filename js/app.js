@@ -68,7 +68,8 @@ var initMap = function() {
 		markers.push(marker);
 		// Create an onclick event to open an infowindow at each marker.
 		marker.addListener('click', function() {
-			populateInfoWindow(this, largeInfowindow);
+			getWiki(this);
+			populateInfoWindow(this, largeInfowindow, infoContent);
 			toggleBounce(this);
 		});
 	};
@@ -79,7 +80,7 @@ var populateInfoWindow = function(marker, infowindow, content) {
 	// Check to make sure the infowindow is not already opened on this marker.
 	if (infowindow.marker != marker) {
 		infowindow.marker = marker;
-		infowindow.setContent('<div>' + marker.title + '</div>');
+		// infowindow.setContent('<div>' + marker.title + '</div>');
 		// infowindow.setContent('<div>' + marker.title + '</div>' + 
 		// 	'<div>' + siteDescription + '</div>' +
 		// 	'<div><a href=' + siteWikiLink + 'a></div>');
@@ -105,6 +106,40 @@ var toggleBounce = function(marker) {
 	}
 };	
 
+// AJAX request to get Wikipedia's info
+ var getWiki = function(current) {
+
+	var wikiRequestTimeout = setTimeout(function() {
+		infoContent = '<div>' + current.title + '</div>' + 
+					  '<div>' + siteDescription + '</div>';
+
+		populateInfoWindow(current, largeInfowindow, infoContent);
+	}, 8000);
+
+	$.ajax({
+		url: wikiUrl + current.title,
+		dataType: 'jsonp',
+		success: function(response) {
+			console.log(response);
+			console.log(response[2][0]);
+			console.log(response[3][0]);
+			var siteDescription = response[2][0];
+			var siteWikiLink = response[3][0];
+
+			//Create InfoWindow content with Wikipedia info
+			infoContent = '<div>' + current.title + '</div>' + 
+							'<div>' + siteDescription + '</div>' +
+							'<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
+			console.log(infoContent);
+
+			clearTimeout(wikiRequestTimeout);
+
+			populateInfoWindow(current, largeInfowindow, infoContent);
+
+		}
+	});
+};
+
 var ViewModel = function() {
 
 	var self = this;
@@ -119,7 +154,7 @@ var ViewModel = function() {
 				currentMarker = markers[i];
 				toggleBounce(currentMarker);
 				// populateInfoWindow(currentMarker, largeInfowindow);
-				self.getWiki(currentMarker);
+				getWiki(currentMarker);
 			}
 		}
 	};
@@ -167,39 +202,39 @@ var ViewModel = function() {
 	// 	});
 	// });
 
-	// AJAX request to get Wikipedia's info
-	self.getWiki = function(current) {
+	// // AJAX request to get Wikipedia's info
+	// self.getWiki = function(current) {
 
-		var wikiRequestTimeout = setTimeout(function() {
-			infoContent = '<div>' + current.title + '</div>' + 
-						  '<div>' + siteDescription + '</div>';
+	// 	var wikiRequestTimeout = setTimeout(function() {
+	// 		infoContent = '<div>' + current.title + '</div>' + 
+	// 					  '<div>' + siteDescription + '</div>';
 
-			populateInfoWindow(current, largeInfowindow, infoContent);
-		}, 8000);
+	// 		populateInfoWindow(current, largeInfowindow, infoContent);
+	// 	}, 8000);
 
-		$.ajax({
-			url: wikiUrl + current.title,
-			dataType: 'jsonp',
-			success: function(response) {
-				console.log(response);
-				console.log(response[2][0]);
-				console.log(response[3][0]);
-				var siteDescription = response[2][0];
-				var siteWikiLink = response[3][0];
+	// 	$.ajax({
+	// 		url: wikiUrl + current.title,
+	// 		dataType: 'jsonp',
+	// 		success: function(response) {
+	// 			console.log(response);
+	// 			console.log(response[2][0]);
+	// 			console.log(response[3][0]);
+	// 			var siteDescription = response[2][0];
+	// 			var siteWikiLink = response[3][0];
 
-				//Create InfoWindow content with Wikipedia info
-				infoContent = '<div>' + current.title + '</div>' + 
-								'<div>' + siteDescription + '</div>' +
-								'<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
-				console.log(infoContent);
+	// 			//Create InfoWindow content with Wikipedia info
+	// 			infoContent = '<div>' + current.title + '</div>' + 
+	// 							'<div>' + siteDescription + '</div>' +
+	// 							'<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
+	// 			console.log(infoContent);
 
-				clearTimeout(wikiRequestTimeout);
+	// 			clearTimeout(wikiRequestTimeout);
 
-				populateInfoWindow(current, largeInfowindow, infoContent);
+	// 			populateInfoWindow(current, largeInfowindow, infoContent);
 
-			}
-		});
-	};
+	// 		}
+	// 	});
+	// };
 };
 
 ko.applyBindings(new ViewModel()); 
