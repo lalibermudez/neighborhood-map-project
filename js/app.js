@@ -178,7 +178,7 @@ var ViewModel = function() {
 				//Create InfoWindow content with Wikipedia info
 				infoContent = '<div>' + current.title + '</div>' + 
 								'<div>' + siteDescription + '</div>' +
-								'<div><a href=' + siteWikiLink + 'a></div>';
+								'<div><a href=' + siteWikiLink + 'a>' + current.title + ' (Wikipedia)' + '</a></div>';
 				console.log(infoContent);
 
 				populateInfoWindow(current, largeInfowindow, infoContent);
