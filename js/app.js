@@ -148,7 +148,7 @@ var ViewModel = function() {
 		});
 	});
 
-	self.getWiki = function(current) {
+	self.getWiki = ko.computed(function(current) {
 		$.ajax({
 			url: wikiUrl + current.title,
 			dataType: 'jsonp',
@@ -156,7 +156,17 @@ var ViewModel = function() {
 				console.log(response);
 			}
 		});
-	};
+	})
+
+	// function(current) {
+	// 	$.ajax({
+	// 		url: wikiUrl + current.title,
+	// 		dataType: 'jsonp',
+	// 		success: function(response) {
+	// 			console.log(response);
+	// 		}
+	// 	});
+	// };
 };
 
 ko.applyBindings(new ViewModel()); 
