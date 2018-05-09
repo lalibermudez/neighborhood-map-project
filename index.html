@@ -9,26 +9,43 @@
 
 	<title>Neighborhood Map Project</title>
 </head>
-<body class="container bg-dark">
-	<div class="row app-title bg-dark">
+<body class="container bg-light">
+	<div class="row">
+		<div class="col">
+			<nav class="navbar navbar-dark bg-light">
+				<div class="input-group mb-3">
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<h2 class="col app-title">Panama City Sites</h2>
+					<!-- <div class="input-group-prepend">
+						<span class="input-group-text"><img src="icons/baseline-search-24px.svg"></span>
+					</div>
+					<input type="search" class="form-control" placeholder="Search..." name="search" data-bind="value: query, valueUpdate: 'keyup' " autocomplete="off"> -->
+				</div>
+				
+				
+			</nav>
+		</div>
+		
 		<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button> -->
-		<h2 class="col">Panama City Sites</h2>
+		
 	</div>
 	<div class="row app-content">
 		<div class="list col-3">
-			<nav class="navbar navbar-dark bg-dark">
+			<!-- <nav class="navbar navbar-dark bg-dark"> -->
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<span class="input-group-text"><img src="icons/baseline-search-24px.svg"></span>
 					</div>
 					<input type="search" class="form-control" placeholder="Search..." name="search" data-bind="value: query, valueUpdate: 'keyup' " autocomplete="off">
-					<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+				<!-- 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
-					</button>
-				</div> -->
-			</nav>
+					</button> -->
+				</div>
+		<!-- 	</nav> -->
 			
 			<ul class="list-group locations collapse" id="navbarToggleExternalContent" data-bind="{foreach: filter}">
 				<li class="list-group-item" data-bind="text: label + '. ' + title, click: $parent.clickList"></li>
