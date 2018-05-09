@@ -181,6 +181,7 @@ var ViewModel = function() {
 				getWiki(currentMarker);
 			}
 		}
+		$hiddenMenu.toggleClass('open');
 	};
 
 	// Create an observable array from the sites array
