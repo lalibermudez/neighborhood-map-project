@@ -53,6 +53,10 @@ html, body {
 	color: red;
 }
 
+.label {
+	font-weight: bold;
+}
+
 /* The side navigation menu from https://www.w3schools.com/howto/howto_js_off-canvas.asp
  * & Udacity's Responsive Patterns course
  */

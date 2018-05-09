@@ -1,33 +1,44 @@
 var sites = [
 	{
 		title: "Panama Viejo",
+		titleHtml: "<span>Panama Viejo</span>",
 		location: {lat: 9.00677, lng: -79.487071},
 		map: map,
-		label : "A"
+		label : "A",
+		labelHtml: "<span class='label'>A. </span>",
+		siteIcon: "<img class='btn btn-outline-info' src=icons/baseline-search-24px.svg'>"
 	},
 	{
 		title: "Casco Viejo Panama",
+		titleHtml: "<span>Casco Viejo</span>",
 		location: {lat: 8.953272, lng: -79.533692},
 		map: map,
-		label : "B"
+		label : "B",
+		labelHtml: "<span class='label'>B. </span>"
 	},
 	{
 		title: "Panama Canal",
+		titleHtml: "<span>Panama Canal</span>",
 		location: {lat: 9.022348, lng: -79.616695},
 		map: map,
-		label : "C"
+		label : "C",
+		labelHtml: "<span class='label'>C. </span>"
 	},
 	{
 		title: "Causeway Islands",
+		titleHtml: "<span>Causeway Islands</span>",
 		location: {lat: 8.917218, lng: -79.533039},
 		map: map,
-		label : "D"
+		label : "D",
+		labelHtml: "<span class='label'>D. </span>"
 	},
 	{
 		title: "Tocumen International Airport",
+		titleHtml: "<span>Tocumen International Airport</span>",
 		location: {lat: 9.067526, lng: -79.387147},
 		map: map,
-		label : "E"
+		label : "E",
+		labelHtml: "<span class='label'>E. </span>"
 	}
 ];
 
@@ -170,6 +181,7 @@ var ViewModel = function() {
 
 	// Create an observable array from the sites array
 	self.places = ko.observableArray(sites);
+	// self.places()[0].title = 'test';
 
 	// Create an observable with the value from the search input
 	self.query = ko.observable('');
