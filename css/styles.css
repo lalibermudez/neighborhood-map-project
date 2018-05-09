@@ -1,6 +1,6 @@
-* {
+/** {
 	border: 1px solid red !important;
-}
+}*/
 
 html, body {
 	box-sizing: border-box;
@@ -39,13 +39,27 @@ html, body {
 	-webkit-transform: translate(-300px, 0);
 	transform: translate(-300px, 0);
 	/* Animate the drawer. */
-	transition: transform 0.3s ease;
-    
+	transition: transform 0.1s ease;  
 }
 
 .off-canvas-menu.open {
 	-webkit-transform: translate(0, 0);
 	transform: translate(0, 0);
+}
+
+/* Display fixed menu for larger screens */
+
+@media (min-width: 992px) {
+	.off-canvas-menu {
+		box-sizing: border-box;
+		position: static;
+		display: block;
+		transform: translate(0, 0);
+	}
+
+	.menu-icon {
+		display: none;
+	}
 }
 
 
