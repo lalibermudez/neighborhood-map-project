@@ -14,8 +14,21 @@ html, body {
 	height: 100%;
 }
 
-.app-title {
+.title-row {
 	text-align: center;
+	background-color: #17a2B8;
+	/*text-transform: uppercase;*/
+}
+
+.app-title {
+	color: #edf2f7;
+	font-size: 1.3rem;
+	margin-top: .5rem;
+}
+
+.menu-icon {
+	border-color: #e9ecef;
+	background-color: #138496;
 }
 
 .locations {
@@ -39,12 +52,18 @@ html, body {
 	-webkit-transform: translate(-300px, 0);
 	transform: translate(-300px, 0);
 	/* Animate the drawer. */
-	transition: transform 0.1s ease;  
+	transition: transform 0.1s ease;
 }
 
 .off-canvas-menu.open {
 	-webkit-transform: translate(0, 0);
 	transform: translate(0, 0);
+}
+
+@media (min-width: 576px) {
+	.app-title {
+		font-size: 1.5rem;
+	}
 }
 
 /* Display fixed menu for larger screens */
@@ -55,10 +74,15 @@ html, body {
 		position: static;
 		display: block;
 		transform: translate(0, 0);
+		background-color: #d4f2f7;  
 	}
 
 	.menu-icon {
 		display: none;
+	}
+
+	.app-title {
+		font-size: 2.5rem;
 	}
 }
 

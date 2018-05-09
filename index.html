@@ -9,11 +9,11 @@
 	<title>Neighborhood Map Project</title>
 </head>
 <body class="container-fluid bg-light">
-	<div class="row">
+	<div class="row title-row">
 		<div class="col">
-			<nav class="navbar navbar-dark bg-light">
+			<nav class="navbar navbar-dark">
 				<div class="input-group">
-					<button class="menu-icon" type="button">
+					<button class="menu-icon btn btn-info" type="button">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<h2 class="col app-title">Panama City Sites</h2>
@@ -25,12 +25,12 @@
 		<div class="list off-canvas-menu" id="menu">
 			<div class="input-group">
 				<div class="input-group-prepend">
-					<span class="input-group-text"><img src="icons/baseline-search-24px.svg"></span>
+					<span class="input-group-text"><img class="btn btn-outline-info" src="icons/baseline-search-24px.svg"></span>
 				</div>
 				<input type="search" class="form-control" placeholder="Search..." name="search" data-bind="value: query, valueUpdate: 'keyup' " autocomplete="off">
 			</div>
 			<ul class="list-group locations" data-bind="{foreach: filter}">
-				<li class="list-group-item" data-bind="text: label + '. ' + title, click: $parent.clickList"></li>
+				<li class="list-group-item list-group-item-info" data-bind="text: label + '. ' + title, click: $parent.clickList"></li>
 			</ul>
 		</div>
 		<div id="map" class="col"></div>
