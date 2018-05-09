@@ -39,6 +39,20 @@ html, body {
 	height: 100%;
 }
 
+.map-error {
+	color: red;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.info-content {
+	padding: 10px 0;
+}
+
+.info-error {
+	color: red;
+}
+
 /* The side navigation menu from https://www.w3schools.com/howto/howto_js_off-canvas.asp
  * & Udacity's Responsive Patterns course
  */

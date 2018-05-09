@@ -134,7 +134,7 @@ var toggleBounce = function(marker) {
 
 			//Create InfoWindow content with Wikipedia info
 			infoContent = '<div class="info-title"><b>' + current.title + '</b></div>' + 
-						  '<div>' + siteDescription + '</div>' +
+						  '<div class="info-content">' + siteDescription + '</div>' +
 				    	  '<div><a href=' + siteWikiLink + ' a>' + current.title + ' (Wikipedia)' + '</a></div>';
 			console.log(infoContent);
 
@@ -142,7 +142,7 @@ var toggleBounce = function(marker) {
 		},
 		error: function() {
 			infoContent = '<div class="info-title"><b>' + current.title + '</b></div>' + 
-						  '<div class="info-error">Unable to load Wikipedia resources.</div>';
+						  '<div class="infor-content info-error">Unable to load Wikipedia resources.</div>';
 			largeInfowindow.setContent(infoContent);
 		}
 	});
