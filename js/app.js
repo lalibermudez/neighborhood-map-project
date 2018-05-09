@@ -38,7 +38,9 @@ var infoContent;
 var siteDescription;
 var siteWikiLink;
 var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=';
-
+var $menuIcon = $('.menu-icon');
+var $hiddenMenu = $('#menu');
+ 
 var initMap = function() {
 	// Constructor creates a new map centeres in Panama City, Panama
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -75,10 +77,37 @@ var initMap = function() {
 	};
 };
 
+// Show error message if Google map does not load
 var mapError = function() {
 	$('#map').html('<div class=map-error>Oops! Could not load Google Map. Try again later.</div>')
 };
 
+// Function to display list menu when the menu icon is clicked
+// $menuIcon.click(function() {
+// 	if ($hiddenMenu.css('width') === 0) {
+// 		$hiddenMenu.css({width: '300px'});
+// 	} else {
+// 		$hiddenMenu.css({width: '0'});
+// 	}
+// });
+
+$menuIcon.click(function(e) {
+	$hiddenMenu.toggleClass('open');
+	e.stopPropagation();
+});
+
+// $menuIcon.click(function() {
+// 	$hiddenMenu.css({width: '300px'});
+// 	$menuIcon.click(function() {
+// 		$hiddenMenu.css({width: '0px'});
+// 	});
+// });
+
+
+
+
+
+// Function to display infoWindow when the marker gets clicked
 var clickMarker = function(marker) {
 	getWiki(marker);
 	toggleBounce(marker);

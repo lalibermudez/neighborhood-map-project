@@ -1,6 +1,6 @@
-/** {
+* {
 	border: 1px solid red !important;
-}*/
+}
 
 html, body {
 	box-sizing: border-box;
@@ -26,15 +26,26 @@ html, body {
 	height: 100%;
 }
 
-/* The side navigation menu from https://www.w3schools.com/howto/howto_js_off-canvas.asp */
+/* The side navigation menu from https://www.w3schools.com/howto/howto_js_off-canvas.asp
+ * & Udacity's Responsive Patterns course
+ */
 .off-canvas-menu {
-	height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 62px; /* Place content 62px from the top, below the title */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+	height: 100%;
+	width: 300px;
+	/* Stay on Top */
+	z-index: 1;
+    position: absolute; 
+	/* This trasform moves the drawer off canvas. */
+	-webkit-transform: translate(-300px, 0);
+	transform: translate(-300px, 0);
+	/* Animate the drawer. */
+	transition: transform 0.3s ease;
+    
 }
+
+.off-canvas-menu.open {
+	-webkit-transform: translate(0, 0);
+	transform: translate(0, 0);
+}
+
 
