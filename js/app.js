@@ -44,15 +44,6 @@ var sites = [
 		labelHtml: '<span class="label">E. </span>',
 		siteIcon: '<i class="material-icons site-icon">photo_camera</i>'
 	},
-	// {
-	// 	title: 'Contadora Island',
-	// 	titleHtml: '<span>Contadora Island</span>',
-	// 	location: {lat: 8.62742, lng: -79.037667},
-	// 	map: map,
-	// 	label : 'F',
-	// 	labelHtml: '<span class="label">F. </span>',
-	// 	siteIcon: '<i class="material-icons site-icon">photo_camera</i>'
-	// },
 	{
 		title: 'Multiplaza',
 		titleHtml: '<span>Multiplaza Pacific Mall</span>',
@@ -208,9 +199,8 @@ var ViewModel = function() {
 				getWiki(currentMarker);
 			}
 		};
-		
-		// $hiddenMenu.toggleClass('open');
 
+		// $hiddenMenu.toggleClass('open');
 	};
 
 	// Create an observable array from the sites array
