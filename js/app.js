@@ -1,44 +1,48 @@
 var sites = [
 	{
-		title: "Panama Viejo",
-		titleHtml: "<span>Panama Viejo</span>",
+		title: 'Panama Viejo',
+		titleHtml: '<span class="site-name">Panama Viejo</span>',
 		location: {lat: 9.00677, lng: -79.487071},
 		map: map,
-		label : "A",
-		labelHtml: "<span class='label'>A. </span>",
-		siteIcon: "<img class='btn btn-outline-info' src=icons/baseline-search-24px.svg'>"
+		label : 'A',
+		labelHtml: '<span class="label"> A. </span>',
+		siteIcon: '<i class="material-icons site-icon">account_balance</i>'
 	},
 	{
-		title: "Casco Viejo Panama",
-		titleHtml: "<span>Casco Viejo</span>",
+		title: 'Casco Viejo Panama',
+		titleHtml: '<span class="site-name">Casco Viejo</span>',
 		location: {lat: 8.953272, lng: -79.533692},
 		map: map,
-		label : "B",
-		labelHtml: "<span class='label'>B. </span>"
+		label : 'B',
+		labelHtml: '<span class="label">B. </span>',
+		siteIcon: '<i class="material-icons site-icon">photo_camera</i>'
 	},
 	{
-		title: "Panama Canal",
-		titleHtml: "<span>Panama Canal</span>",
+		title: 'Panama Canal',
+		titleHtml: '<span>Panama Canal</span>',
 		location: {lat: 9.022348, lng: -79.616695},
 		map: map,
-		label : "C",
-		labelHtml: "<span class='label'>C. </span>"
+		label : 'C',
+		labelHtml: '<span class="label">C. </span>',
+		siteIcon: '<i class="material-icons site-icon">directions_boat</i>'
 	},
 	{
-		title: "Causeway Islands",
-		titleHtml: "<span>Causeway Islands</span>",
+		title: 'Causeway Islands',
+		titleHtml: '<span>Causeway Islands</span>',
 		location: {lat: 8.917218, lng: -79.533039},
 		map: map,
-		label : "D",
-		labelHtml: "<span class='label'>D. </span>"
+		label : 'D',
+		labelHtml: '<span class="label">D. </span>',
+		siteIcon: '<i class="material-icons site-icon">photo_camera</i>'
 	},
 	{
-		title: "Tocumen International Airport",
-		titleHtml: "<span>Tocumen International Airport</span>",
+		title: 'Tocumen International Airport',
+		titleHtml: '<span>Tocumen International Airport</span>',
 		location: {lat: 9.067526, lng: -79.387147},
 		map: map,
-		label : "E",
-		labelHtml: "<span class='label'>E. </span>"
+		label : 'E',
+		labelHtml: '<span class="label">E. </span>',
+		siteIcon: '<i class="material-icons site-icon">flight</i>'
 	}
 ];
 

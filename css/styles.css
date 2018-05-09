@@ -25,6 +25,9 @@ html, body {
 	font-size: 1.3rem;
 	margin-top: .5rem;
 }
+.material-icons {
+	color: #0c5460;
+}
 
 .menu-icon {
 	border-color: #e9ecef;
@@ -55,6 +58,15 @@ html, body {
 
 .label {
 	font-weight: bold;
+	padding-right: 5px;
+}
+
+.site-icon, .label, .site-title {
+	float: left;
+}
+
+.site-icon {
+	padding-right: 15px;
 }
 
 /* The side navigation menu from https://www.w3schools.com/howto/howto_js_off-canvas.asp
