@@ -18,12 +18,21 @@ var sites = [
 		siteIcon: '<i class="material-icons site-icon">photo_camera</i>'
 	},
 	{
+		title: 'Bridge of the Americas',
+		titleHtml: '<span>Bridge of the Americas</span>',
+		location: {lat: 8.94328, lng: -79.564843},
+		map: map,
+		label : 'C',
+		labelHtml: '<span class="label">C. </span>',
+		siteIcon: '<i class="material-icons site-icon">photo_camera</i>'
+	},
+	{
 		title: 'Panama Canal',
 		titleHtml: '<span>Panama Canal</span>',
 		location: {lat: 9.022348, lng: -79.616695},
 		map: map,
-		label : 'C',
-		labelHtml: '<span class="label">C. </span>',
+		label : 'D',
+		labelHtml: '<span class="label">D. </span>',
 		siteIcon: '<i class="material-icons site-icon">directions_boat</i>'
 	},
 	{
@@ -31,17 +40,35 @@ var sites = [
 		titleHtml: '<span>Causeway Islands</span>',
 		location: {lat: 8.917218, lng: -79.533039},
 		map: map,
-		label : 'D',
-		labelHtml: '<span class="label">D. </span>',
+		label : 'E',
+		labelHtml: '<span class="label">E. </span>',
 		siteIcon: '<i class="material-icons site-icon">photo_camera</i>'
+	},
+	// {
+	// 	title: 'Contadora Island',
+	// 	titleHtml: '<span>Contadora Island</span>',
+	// 	location: {lat: 8.62742, lng: -79.037667},
+	// 	map: map,
+	// 	label : 'F',
+	// 	labelHtml: '<span class="label">F. </span>',
+	// 	siteIcon: '<i class="material-icons site-icon">photo_camera</i>'
+	// },
+	{
+		title: 'Multiplaza',
+		titleHtml: '<span>Multiplaza Pacific Mall</span>',
+		location: {lat: 8.984852, lng: -79.510684},
+		map: map,
+		label : 'F',
+		labelHtml: '<span class="label">F. </span>',
+		siteIcon: '<i class="material-icons site-icon">local_mall</i>'
 	},
 	{
 		title: 'Tocumen International Airport',
 		titleHtml: '<span>Tocumen International Airport</span>',
 		location: {lat: 9.067526, lng: -79.387147},
 		map: map,
-		label : 'E',
-		labelHtml: '<span class="label">E. </span>',
+		label : 'G',
+		labelHtml: '<span class="label">G. </span>',
 		siteIcon: '<i class="material-icons site-icon">flight</i>'
 	}
 ];
@@ -180,8 +207,10 @@ var ViewModel = function() {
 				populateInfoWindow(currentMarker, largeInfowindow, infoContent);
 				getWiki(currentMarker);
 			}
-		}
-		$hiddenMenu.toggleClass('open');
+		};
+		
+		// $hiddenMenu.toggleClass('open');
+
 	};
 
 	// Create an observable array from the sites array
